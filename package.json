@@ -1,0 +1,17 @@
+{
+  "name": "batch-openbox",
+  "version": "1.0.0",
+  "description": "Batch open box script for CastDNA on Base chain",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "blast": "node blast.js",
+    "single": "node single-tx.js",
+    "no-tx": "node no-tx.js",
+    "reclaim": "node reclaim.js"
+  },
+  "dependencies": {
+    "ethers": "^6.13.0",
+    "dotenv": "^16.4.0"
+  }
+}
