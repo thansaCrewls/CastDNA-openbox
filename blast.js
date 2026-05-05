@@ -119,9 +119,20 @@ async function main() {
       pendingTxs.push({ index: i + 1, tx, castDnaString });
       console.log(`  [${i + 1}/${actualCount}] Sent: ${tx.hash.slice(0, 18)}... (nonce: ${nonce})`);
       nonce++;
+      // Delay agar RPC tidak rate-limit
+      await sleep(500);
     } catch (error) {
       console.error(`  [${i + 1}] ❌ Send failed: ${error.shortMessage || error.message}`);
-      break;
+      // Tunggu lalu refresh nonce dan coba lanjut
+      await sleep(2000);
+      try {
+        nonce = await provider.getTransactionCount(wallet.address, "pending");
+        console.log(`  🔄 Nonce refreshed: ${nonce}, retrying...`);
+        i--; // retry index yang sama
+      } catch {
+        console.error("  🛑 Cannot recover, stopping sends.");
+        break;
+      }
     }
   }
 
