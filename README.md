@@ -24,7 +24,10 @@ Script untuk mengirim banyak transaksi "open box" secara otomatis ke contract Ca
 | `BOX_COUNT` | Jumlah box yang mau di-open | 50 |
 | `DELAY_MS` | Delay antar transaksi (ms) | 2000 |
 | `RPC_URL` | Base RPC endpoint | https://mainnet.base.org |
-Cara ambil USER_ID = coba 1x tx open box
+
+
+
+note: Cara ambil USER_ID = coba 1x tx open box
 buka basescan tx ahshnya, dibagian input data view input as UTF-8
 ambil string setelah castdna: dan sebelum :timestamp
 
